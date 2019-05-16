@@ -20,7 +20,7 @@ public class TestPMT {
 		
 		assertEquals(PMTExpected, PMT, 0.01);
 		
-		
+		System.out.println(Math.abs(FinanceLib.pmt(r, n, p, f, t)));
 		
 	}
 	
