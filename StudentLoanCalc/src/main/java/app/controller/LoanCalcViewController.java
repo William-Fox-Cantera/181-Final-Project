@@ -60,7 +60,6 @@ public class LoanCalcViewController implements Initializable   {
 		lc.setNbrOfYears(Double.parseDouble(NbrOfYears.getText()));
 		lc.setInterestRate(Double.parseDouble(InterestRate.getText()));
 		lc.setAdditionalPayment(Double.parseDouble(AdditionalPayment.getText()));
-		//System.out.println("Amount: " + LoanAmount.getText());
 		
 		double TotalPayment = lc.CalculateTotalPayment();
 		double TotalInterest = lc.CalculateTotalInterest();
