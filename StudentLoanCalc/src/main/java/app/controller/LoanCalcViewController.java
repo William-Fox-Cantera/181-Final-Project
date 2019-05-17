@@ -62,7 +62,9 @@ public class LoanCalcViewController implements Initializable   {
 		lc.setAdditionalPayment(Double.parseDouble(AdditionalPayment.getText()));
 		
 		double TotalPayment = lc.CalculateTotalPayment();
+		TotalPayment = Math.round(TotalPayment*100)/100;
 		double TotalInterest = lc.CalculateTotalInterest();
+		TotalInterest = Math.round(TotalInterest*100)/100;
 		
 		lblTotalPayemnts.setText(String.valueOf(TotalPayment));
 		lblTotalInterest.setText(String.valueOf(TotalInterest));
