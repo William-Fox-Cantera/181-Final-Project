@@ -56,7 +56,7 @@ public class TestPMT {
 		double interest1 = lc.CalculateTotalInterest();
 		System.out.println(interest1);
 		
-		assertEquals((int)interest1, 41830);
+		assertEquals(interest1, 41830.222, .01);
 		
 		
 		
