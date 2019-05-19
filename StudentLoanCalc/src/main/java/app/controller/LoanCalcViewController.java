@@ -3,11 +3,14 @@ package app.controller;
 import app.StudentCalc;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
 
@@ -36,8 +39,6 @@ public class LoanCalcViewController implements Initializable   {
 	@FXML
 	private DatePicker PaymentStartDate;
 	
-	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
@@ -55,16 +56,14 @@ public class LoanCalcViewController implements Initializable   {
 	@FXML
 	private void btnCalcLoan(ActionEvent event) {
 	
-		LoanCalculator lc = new LoanCalculator();
-		lc.setLoanAmount(Double.parseDouble(LoanAmount.getText()));
-		lc.setNbrOfYears(Double.parseDouble(NbrOfYears.getText()));
-		lc.setInterestRate(Double.parseDouble(InterestRate.getText()));
-		lc.setAdditionalPayment(Double.parseDouble(AdditionalPayment.getText()));
+		LoanCalculator lc = new LoanCalculator(Double.parseDouble(LoanAmount.getText()), 
+		Double.parseDouble(AdditionalPayment.getText()), Integer.parseInt(NbrOfYears.getText()), 
+		Double.parseDouble(InterestRate.getText()));
 		
 		double TotalPayment = lc.CalculateTotalPayment();
-		TotalPayment = Math.round(TotalPayment*100)/100;
+		TotalPayment = Math.round(TotalPayment*100.0)/100.0;
 		double TotalInterest = lc.CalculateTotalInterest();
-		TotalInterest = Math.round(TotalInterest*100)/100;
+		TotalInterest = Math.round(TotalInterest*100.0)/100.0;
 		
 		lblTotalPayemnts.setText(String.valueOf(TotalPayment));
 		lblTotalInterest.setText(String.valueOf(TotalInterest));

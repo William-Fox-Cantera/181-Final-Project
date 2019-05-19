@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import org.apache.poi.ss.formula.functions.*;
 import org.junit.Test;
 
+import app.controller.LoanCalculator;
+
 public class TestPMT {
 
 	@Test
@@ -42,6 +44,23 @@ public class TestPMT {
 		
 	}
 
+	//Test to see if the interest that is output is the correct interest 
+	@Test
+	public void TotalInterest_Test() {
+		double Loan = 120000;
+		int years = 15;
+		double interest = .05;
+		double additionalAmount = 125;
+		LoanCalculator lc = new LoanCalculator(Loan, additionalAmount, years, interest);
+	
+		double interest1 = lc.CalculateTotalInterest();
+		System.out.println(interest1);
+		
+		assertEquals((int)interest1, 41830);
+		
+		
+		
+	}
 }
 
  

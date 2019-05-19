@@ -9,15 +9,17 @@ public class LoanCalculator {
 	
 	private double AdditionalPayment;
 	
-	private double NbrOfYears;
+	private int NbrOfYears;
 	
 	private double InterestRate;
 	
-	//No argument constructor
-	public void LoanCalulator() {
-		
+	public LoanCalculator(double LoanAmount, double AdditionalPayment, int NbrOfYears, double InterestRate) {
+		this.LoanAmount = LoanAmount;
+		this.AdditionalPayment = AdditionalPayment;
+		this.NbrOfYears = NbrOfYears;
+		this.InterestRate = InterestRate;
 	}
-	
+
 	//Getters and setters
 	public double getAdditionalPayment() {
 		return AdditionalPayment;
@@ -31,7 +33,7 @@ public class LoanCalculator {
 		return NbrOfYears;
 	}
 
-	public void setNbrOfYears(double d) {
+	public void setNbrOfYears(int d) {
 		NbrOfYears = d;
 	}
 
@@ -70,14 +72,15 @@ public class LoanCalculator {
 		double PPMT = 0;
 		double pv = LoanAmount;
 		
-		while(PPMT+AdditionalPayment < pv) {
+		while(PPMT + AdditionalPayment < pv) {
 			double PMT = CalculatePMT();
-			PPMT = PMT-CalculateInterest(pv);
+			PPMT = PMT - CalculateInterest(pv);
 			pv -= PPMT + AdditionalPayment;
 			interest += PMT-PPMT;
-			System.out.println(PPMT);
+			System.out.println(PPMT+AdditionalPayment);
 		}
-		return interest + LoanAmount;
+		Double FinalInterest = CalculateInterest(pv);
+		return interest + LoanAmount + FinalInterest;
 	}
 	
 	public double CalculateTotalInterest() {
